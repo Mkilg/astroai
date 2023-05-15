@@ -6,10 +6,10 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const configuration = new Configuration({
   // organization: "org-GQvyGcX8tf3sOxQfFDsne0fY",
-  apiKey: process.env.OPENAI_API,
+  apiKey:process.env.OPENAI_API,
 });
 const openai = new OpenAIApi(configuration);
-console.log(process.env.OPENAI_API);
+// console.log(process.env.OPENAI_API);
 
 export default function Home() {
   const [name, setName] = useState("");
