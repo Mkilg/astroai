@@ -9,6 +9,7 @@ const configuration = new Configuration({
   apiKey: process.env.API_KEY,
 });
 const openai = new OpenAIApi(configuration);
+// console.log(process.env.OPENAI_API);
 
 export default function Home() {
   const [name, setName] = useState("");
@@ -71,7 +72,7 @@ export default function Home() {
               <div className="col-md-6">
                 <div className="form-group">
                   <label>
-                    Date of birth:
+                    Date of Birth:
                     <input
                       className="form-control"
                       type="date"
