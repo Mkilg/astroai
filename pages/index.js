@@ -6,7 +6,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const configuration = new Configuration({
   // organization: "org-GQvyGcX8tf3sOxQfFDsne0fY",
-  apiKey: "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",
+  apiKey: process.env.API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
