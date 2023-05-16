@@ -10,7 +10,7 @@ const openai = async (req, res) => {
     const { prompt } = JSON.parse(req.body);
 
     const openaiRes = await openaiApi.createCompletion({
-      model: "text-davinci-003",
+      model: "gpt-3.5-turbo",
       prompt,
     });
 
