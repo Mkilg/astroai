@@ -17,7 +17,7 @@ export default function Home() {
     event.preventDefault();
     setLoading(true);
     const prompt = `The user ${name} (${dob}) asks: for only astrological sign name also reply this question "${question}"\n\nResponse:`;
-    const res = await fetch(`http://localhost:3000/api/openaiapi`, {
+    const res = await fetch(`/api/openaiapi`, {
       method: "POST",
       cache: "no-store",
       headers: {
