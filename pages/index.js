@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 // import { openai } from "./api/openaiapi";
 // console.log(process.env.OPENAI_API);
-
+// updates
 export default function Home() {
   const [name, setName] = useState("");
   const [dob, setDob] = useState("");
