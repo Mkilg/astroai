@@ -1,13 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Configuration, OpenAIApi } from "openai";
 import { useEffect, useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
-const configuration = new Configuration({
-  apiKey: process.env.API_KEY,
-});
-const openai = new OpenAIApi(configuration);
+// import { openai } from "./api/openaiapi";
 // console.log(process.env.OPENAI_API);
 
 export default function Home() {
@@ -21,21 +16,26 @@ export default function Home() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-    // Use OpenAI's GPT-3 API to generate a response to the user's question
-    const prompt = `The user ${name} (${dob}) asks: for only  astrological sign name also reply this question " ${question}"\n\nResponse:`;
-    const res = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: prompt,
+    const prompt = `The user ${name} (${dob}) asks: for only astrological sign name also reply this question "${question}"\n\nResponse:`;
+    const res = await fetch(`http://localhost:3000/api/openaiapi`, {
+      method: "POST",
+      cache: "no-store",
+      headers: {
+        accept: "application/json",
+      },
+      body: JSON.stringify({ prompt: prompt }),
     });
 
-    if (res.data) {
-      setResponse(res.data.choices[0].text.trim());
+    if (res.ok) {
+      const data = await res.json();
+      setResponse(data.choices[0].text.trim());
       setLoading(false);
     } else {
       console.log(res);
       setLoading(false);
     }
   };
+
   return (
     <div className={styles.container}>
       <Head>
