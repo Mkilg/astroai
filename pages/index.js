@@ -9,6 +9,7 @@ export default function Home() {
   const [name, setName] = useState("");
   const [dob, setDob] = useState("");
   const [question, setQuestion] = useState("");
+  const [place, setPlace] = useState("");
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
   const [sign, setSign] = useState("");
@@ -16,7 +17,7 @@ export default function Home() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-    const prompt = `The user ${name} (${dob}) asks: for only astrological sign name also reply this question "${question}"\n\nResponse:`;
+    const prompt = `The user ${name} born on (${dob}) at ${place} asks: for only astrological sign name also reply this question "${question}"\n\nResponse:`;
     const res = await fetch(`/api/openaiapi`, {
       method: "POST",
       cache: "no-store",
@@ -84,7 +85,21 @@ export default function Home() {
             </div>
 
             <br />
-
+            <div className="row w-100">
+              <div className="col-md-6">
+                <div className="form-group">
+                  <label>
+                    Place of Birth:
+                    <input
+                      className="form-control"
+                      type="text"
+                      value={place}
+                      onChange={(e) => setPlace(e.target.value)}
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
             <div className="container">
               <div className="row w-100">
                 <div className="col-md-12">
