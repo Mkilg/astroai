@@ -100,23 +100,23 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="container">
-              <div className="row w-100">
-                <div className="col-md-12">
-                  <div className="form-group">
-                    <label>
-                      Question:
-                      <textarea
-                        className="form-control"
-                        cols={50}
-                        value={question}
-                        onChange={(e) => setQuestion(e.target.value)}
-                      />
-                    </label>
-                  </div>
+            <br />
+            <div className="row w-100">
+              <div className="col-md-12">
+                <div className="form-group">
+                  <label>
+                    Question:
+                    <textarea
+                      className="form-control"
+                      cols={50}
+                      value={question}
+                      onChange={(e) => setQuestion(e.target.value)}
+                    />
+                  </label>
                 </div>
               </div>
             </div>
+
             <br />
             <button type="submit" className="mt-2 btn btn-primary">
               Submit
