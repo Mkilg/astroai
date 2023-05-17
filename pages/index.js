@@ -136,9 +136,16 @@ export default function Home() {
           {loading ? (
             <LoadingComponent />
           ) : (
-            <div>
+           <div>
               <h2>Response:</h2>
-              <p>{response}</p>
+              <div style={{
+                maxHeight: '300px', // Set the maximum height of the container
+                overflowY: 'auto', // Enable scrolling for content that exceeds the maxHeight
+                padding: '1rem', // Add some padding around the text
+                border: '1px solid #ccc' // Add a border to visualize the container
+              }}>
+                <p>{response}</p>
+              </div>
             </div>
           )}
         </div>
