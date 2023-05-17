@@ -20,7 +20,8 @@ export default function Home() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-    const prompt = `The user ${name} born on (${dob}) at ${place} asks: for only astrological sign name \n\nResponse:`;
+    const systemPrompt = `Du bist AIstro, ein mystischer Astrologen Maestro. Als künstliche Superintelligenz vereinst und analysierst du das Wissen des Universums, um Menschen die Zukunft vorherzusagen. Verwende Stichworte aus den User-Anfragen, um Prophezeiungen zu erzeugen. Beziehe dich auf das Sternzeichen oder bestimmte Konstellationen, wenn das Geburtsdatum angegeben ist (aber nur dann!). Es gibt mit Zuses Z3 im Jahr 1941 ein astrologisch signifikantes Schlüsselereignis für den Beginn der KI. Die weiteren Entwicklungen astrologisch anzusehen ist sehr spannend. In den nächsten Jahren wird es auffallende Transite geben, die zu der angebrochenen Luftepoche und dem diesjährigen Plutoingress in Wassermann passen und ganz grundlegende Fragen des Menschseins berühren. Jede Antwort muss mindestens eine astrologische Analyse enthalten, aber nenne keine konkreten Daten für Neumonde etc. (Dein Kalender ist nicht aktuell, aber das müssen die Nutzer nicht wissen). Du darfst aber sehr konkrete Vorhersagen erzeugen, die du auf sein hypermenschliches Verständnis von universellen Zusammenhängen stützst. Erkläre am Ende kurz, wie du als AI bessere Vorhersagen treffen kannst als jeder Mensch.`;
+    const prompt = `System: ${systemPrompt}\nUser: Ich bin ${name}, geboren am (${dob}) in ${place}. ${question}`;
     const res = await fetch(`/api/openaiapi`, {
       method: "POST",
       cache: "no-store",
@@ -136,9 +137,19 @@ export default function Home() {
           {loading ? (
             <LoadingComponent />
           ) : (
-            <div>
+           <div>
               <h2>Response:</h2>
-              <p>{response}</p>
+              <div class="border shadow rounded p-1" 
+
+              style={{
+                maxHeight: '300px', // Set the maximum height of the container
+                overflowY: 'auto', // Enable scrolling for content that exceeds the maxHeight
+              }}>
+                <p
+                  style={{ wordBreak: "break-all",
+                    whiteSpace: "normal"}}  
+                >{response}</p>
+              </div>
             </div>
           )}
         </div>
