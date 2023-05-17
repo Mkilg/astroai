@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>          AI-Strology</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -60,12 +60,11 @@ export default function Home() {
 
         <p className={styles.description}>
           Das Horoskop basierend auf künstlicher Intelligenz
-
-
         </p>
 
         <div className="w-100">
-          <form onSubmit={handleSubmit} >
+            <p className="w-100 my-4">Gib deinen Namen undßß dein Geburtsdatum ein und lasse dir dein persönliches Horoskop anzeigen!</p>
+          <form onSubmit={handleSubmit} className="shadow p-5 rounded border mb-3" >
             <div className="row">
               <div className="col-md-6">
                 <div className="form-group">
