@@ -100,8 +100,8 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <br />
-            <div className="row w-100">
+            {/* <br /> */}
+            {/* <div className="row w-100">
               <div className="col-md-12">
                 <div className="form-group">
                   <label>
@@ -115,7 +115,7 @@ export default function Home() {
                   </label>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <br />
             <button type="submit" className="mt-2 btn btn-primary">
