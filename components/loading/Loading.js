@@ -10,7 +10,7 @@ function LoadingComponent() {
     "Horoskop wird geladen"
   ];
 
-  const delay = 300; // Delay in milliseconds (2 seconds)
+  const delay = 2500; // Delay in milliseconds (2 seconds)
 
   const [loadingText, setLoadingText] = useState(phrases[0]);
 
