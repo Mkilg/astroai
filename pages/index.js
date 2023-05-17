@@ -2,6 +2,9 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import LoadingComponent from "../components/loading/Loading";
+import Link from 'next/link';
+
 // import { openai } from "./api/openaiapi";
 // console.log(process.env.OPENAI_API);
 // updates
@@ -17,7 +20,7 @@ export default function Home() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-    const prompt = `The user ${name} born on (${dob}) at ${place} asks: for only astrological sign name also reply this question "${question}"\n\nResponse:`;
+    const prompt = `The user ${name} born on (${dob}) at ${place} asks: for only astrological sign name \n\nResponse:`;
     const res = await fetch(`/api/openaiapi`, {
       method: "POST",
       cache: "no-store",
@@ -30,12 +33,15 @@ export default function Home() {
     if (res.ok) {
       const data = await res.json();
       setResponse(data.choices[0].text.trim());
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 300)
     } else {
       console.log(res);
       setLoading(false);
     }
   };
+
 
   return (
     <div className={styles.container}>
@@ -46,16 +52,21 @@ export default function Home() {
 
       <main>
         <h1 className={styles.title}>
-          Welcome to <a href="#">Astro Ai</a>
+
+          AI-Strology
+
+
         </h1>
 
         <p className={styles.description}>
-          Get started by entering date of birth and name
+          Das Horoskop basierend auf künstlicher Intelligenz
+
+
         </p>
 
         <div className="w-100">
-          <form onSubmit={handleSubmit} className="w-100">
-            <div className="row w-100">
+          <form onSubmit={handleSubmit} >
+            <div className="row">
               <div className="col-md-6">
                 <div className="form-group">
                   <label>
@@ -72,7 +83,7 @@ export default function Home() {
               <div className="col-md-6">
                 <div className="form-group">
                   <label>
-                    Date of Birth:
+                    Geburtsdatum:
                     <input
                       className="form-control"
                       type="date"
@@ -89,7 +100,7 @@ export default function Home() {
               <div className="col-md-6">
                 <div className="form-group">
                   <label>
-                    Place of Birth:
+                    Geburtsort:
                     <input
                       className="form-control"
                       type="text"
@@ -119,11 +130,11 @@ export default function Home() {
 
             <br />
             <button type="submit" className="mt-2 btn btn-primary">
-              Submit
+              Absenden
             </button>
           </form>
           {loading ? (
-            <h3>Loading...</h3>
+            <LoadingComponent />
           ) : (
             <div>
               <h2>Response:</h2>
@@ -134,14 +145,15 @@ export default function Home() {
       </main>
 
       <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+        <Link
+          href="/legal"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
-        </a>
+          Impressum
+
+{" "}
+        </Link>
       </footer>
 
       <style jsx>{`
