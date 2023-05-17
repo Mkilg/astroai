@@ -64,7 +64,7 @@ export default function Home() {
         </p>
 
         <div className="w-100">
-            <p className="w-100 my-4">Gib deinen Namen undßß dein Geburtsdatum ein und lasse dir dein persönliches Horoskop anzeigen!</p>
+            <p className="w-100 my-4">Gib deinen Namen und dein Geburtsdatum ein und lasse dir dein persönliches Horoskop anzeigen!</p>
           <form onSubmit={handleSubmit} className="shadow p-5 rounded border mb-3" >
             <div className="row">
               <div className="col-md-6">
