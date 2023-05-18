@@ -7,12 +7,12 @@ const openai = async (req, res) => {
     });
 
     const openaiApi = new OpenAIApi(configuration);
-    const { prompt } = JSON.parse(req.body);
+    const { messages } = JSON.parse(req.body);
 
     const openaiRes = await openaiApi.createChatCompletion({
-      // model: "gpt-3.5-turbo",
-      model:"text-davinci-003",
-      prompt:prompt,
+      model: "gpt-3.5-turbo",
+      // model:"text-davinci-003",
+      messages,
 
 
     });
