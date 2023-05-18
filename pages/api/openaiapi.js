@@ -10,9 +10,11 @@ const openai = async (req, res) => {
     const { prompt } = JSON.parse(req.body);
 
     const openaiRes = await openaiApi.createCompletion({
-      model: "gpt-3.5-turbo",
-      //model:"text-davinci-003",
+      // model: "gpt-3.5-turbo",
+      model:"text-davinci-003",
       prompt,
+      temperature: 0.8, // Adjust the temperature value
+
     });
 
     res.status(200).json(openaiRes.data);

@@ -6,9 +6,6 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 // console.log(process.env.OPENAI_API);
 // updates
 export default function Home() {
-
-
-
   return (
     <div className={styles.container}>
       <Head>
