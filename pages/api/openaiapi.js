@@ -12,7 +12,7 @@ const openai = async (req, res) => {
     const openaiRes = await openaiApi.createChatCompletion({
       // model: "gpt-3.5-turbo",
       model:"text-davinci-003",
-      messages:prompt,
+      prompt:prompt,
 
 
     });
