@@ -27,7 +27,7 @@ export default function Home() {
     //const messages= [ {role: "system", content: systemPrompt},
     //{role: "user", content: prompt},
     //]
-    const messages= [ {role: "user", content: prompt}
+    const messages= [ {role: "system", content: systemPrompt}, {role: "user", content: prompt}
     ]
 
     const res = await fetch(`/api/openaiapi`, {
