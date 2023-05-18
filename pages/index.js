@@ -30,6 +30,7 @@ export default function Home() {
     const messages= [ {role: "system", content: systemPrompt}, {role: "user", content: prompt}
     ]
 
+    /*
     const res = await fetch(`/api/openaiapi`, {
       method: "POST",
       cache: "no-store",
@@ -38,6 +39,44 @@ export default function Home() {
       },
       body: JSON.stringify({ messages }),
     });
+    */
+    
+    //new function starts here
+    async function fetchWithTimeout(resource, options, timeout = 10000) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+
+  const response = await fetch(resource, {
+    ...options,
+    signal: controller.signal,
+  });
+  clearTimeout(id);
+
+  return response;
+}
+
+async function fetchData() {
+  try {
+    const res = await fetchWithTimeout(`/api/openaiapi`, {
+      method: "POST",
+      cache: "no-store",
+      headers: {
+        accept: "application/json",
+      },
+      body: JSON.stringify({ messages }),
+    }, 20000); // Set the timeout value in milliseconds. In this example, it's set to 20 seconds.
+
+    // Handle the response here
+  } catch (error) {
+    if (error.name === "AbortError") {
+      console.error("Request timed out:", error);
+    } else {
+      console.error("Error fetching data:", error);
+    }
+  }
+}
+
+fetchData();
 
     if (res.ok) {
       const data = await res.json();
