@@ -13,8 +13,6 @@ const openai = async (req, res) => {
       // model: "gpt-3.5-turbo",
       model:"text-davinci-003",
       messages:prompt,
-      temperature: 0.8, // Adjust the temperature value'
-      maxTokens: 100,
 
 
     });
