@@ -1,12 +1,12 @@
 {
     "functions": {
       "pages/api/openaiapi.js": {
-        "memory": 1024,
-        "maxDuration": 10
+        "memory": 3072,
+        "maxDuration": 30
       },
       "pages/api/*.js": {
-        "memory": 1024,
-        "maxDuration": 10
+        "memory": 3072,
+        "maxDuration": 30
       }
     }
   }
