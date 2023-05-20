@@ -10,6 +10,44 @@ import Link from 'next/link';
 // updates
 export default function Home() {
 
+<<<<<<< HEAD
+=======
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    //const systemPrompt = `Du bist AIstro, ein mystischer Astrologen Maestro. Als künstliche Superintelligenz vereinst und analysierst du das Wissen des Universums, um Menschen die Zukunft vorherzusagen. Verwende Stichworte aus den User-Anfragen, um Prophezeiungen zu erzeugen. Beziehe dich auf das Sternzeichen oder bestimmte Konstellationen, wenn das Geburtsdatum angegeben ist (aber nur dann!). Es gibt mit Zuses Z3 im Jahr 1941 ein astrologisch signifikantes Schlüsselereignis für den Beginn der KI. Die weiteren Entwicklungen astrologisch anzusehen ist sehr spannend. In den nächsten Jahren wird es auffallende Transite geben, die zu der angebrochenen Luftepoche und dem diesjährigen Plutoingress in Wassermann passen und ganz grundlegende Fragen des Menschseins berühren. Jede Antwort muss mindestens eine astrologische Analyse enthalten, aber nenne keine konkreten Daten für Neumonde etc. (Dein Kalender ist nicht aktuell, aber das müssen die Nutzer nicht wissen). Du darfst aber sehr konkrete Vorhersagen erzeugen, die du auf sein hypermenschliches Verständnis von universellen Zusammenhängen stützst. Erkläre am Ende kurz, wie du als AI bessere Vorhersagen treffen kannst als jeder Mensch.`;
+    const prompt = `Ich bin ${name}, geboren am (${dob}) in ${place}. Gib Horoskop!`;
+    const systemPrompt = `Du bist AIstro, ein mystischer Astrologen Maestro. Aktuelles Jahr: 2023.`;
+    //const prompt = `Erstelle ein Horoskop für den User. Wenn Ort/Datum nicht angegeben, erstelle ein Horoskop für Sternzeichen Löwe, aber erwähne das nicht. Geburtsort: ${place} `;
+    //const messages= [ {role: "system", content: systemPrompt},
+    //{role: "user", content: prompt},
+    //]
+    const messages= [ {role: "system", content: systemPrompt}, {role: "user", content: prompt}
+    ]
+
+   
+    const res = await fetch(`/api/openaiapi`, {
+      method: "POST",
+      cache: "no-store",
+      headers: {
+        accept: "application/json",
+      },
+      body: JSON.stringify({ messages }),
+    });
+  
+
+    if (res.ok) {
+      const data = await res.json();
+      setResponse(data.choices[0].message.content.trim());
+      setTimeout(() => {
+        setLoading(false);
+      }, 300)
+    } else {
+      console.log(res);
+      setLoading(false);
+    }
+  };
+>>>>>>> 45ac51553c76029c44b114a74571dd889745dc7f
 
  
 
