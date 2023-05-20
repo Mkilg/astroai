@@ -9,16 +9,21 @@ import Link from 'next/link';
 // console.log(process.env.OPENAI_API);
 // updates
 export default function Home() {
+  const [name, setName] = useState("");
+  const [dob, setDob] = useState("");
+  const [question, setQuestion] = useState("");
+  const [place, setPlace] = useState("");
+  const [response, setResponse] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [sign, setSign] = useState("");
 
-<<<<<<< HEAD
-=======
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
     //const systemPrompt = `Du bist AIstro, ein mystischer Astrologen Maestro. Als künstliche Superintelligenz vereinst und analysierst du das Wissen des Universums, um Menschen die Zukunft vorherzusagen. Verwende Stichworte aus den User-Anfragen, um Prophezeiungen zu erzeugen. Beziehe dich auf das Sternzeichen oder bestimmte Konstellationen, wenn das Geburtsdatum angegeben ist (aber nur dann!). Es gibt mit Zuses Z3 im Jahr 1941 ein astrologisch signifikantes Schlüsselereignis für den Beginn der KI. Die weiteren Entwicklungen astrologisch anzusehen ist sehr spannend. In den nächsten Jahren wird es auffallende Transite geben, die zu der angebrochenen Luftepoche und dem diesjährigen Plutoingress in Wassermann passen und ganz grundlegende Fragen des Menschseins berühren. Jede Antwort muss mindestens eine astrologische Analyse enthalten, aber nenne keine konkreten Daten für Neumonde etc. (Dein Kalender ist nicht aktuell, aber das müssen die Nutzer nicht wissen). Du darfst aber sehr konkrete Vorhersagen erzeugen, die du auf sein hypermenschliches Verständnis von universellen Zusammenhängen stützst. Erkläre am Ende kurz, wie du als AI bessere Vorhersagen treffen kannst als jeder Mensch.`;
-    const prompt = `Ich bin ${name}, geboren am (${dob}) in ${place}. Gib Horoskop!`;
-    const systemPrompt = `Du bist AIstro, ein mystischer Astrologen Maestro. Aktuelles Jahr: 2023.`;
-    //const prompt = `Erstelle ein Horoskop für den User. Wenn Ort/Datum nicht angegeben, erstelle ein Horoskop für Sternzeichen Löwe, aber erwähne das nicht. Geburtsort: ${place} `;
+    //const prompt = ` ${systemPrompt}\nUser: Ich bin ${name}, geboren am (${dob}) in ${place}. ${question}`;
+    const systemPrompt = `Du bist AIstro, ein mystischer Astrologen Maestro.`;
+    const prompt = `Erstelle ein Horoskop für den User. Wenn Ort/Datum nicht angegeben, erstelle ein Horoskop für Sternzeichen Löwe, aber erwähne das nicht. Geburtsort: ${place} `;
     //const messages= [ {role: "system", content: systemPrompt},
     //{role: "user", content: prompt},
     //]
@@ -47,9 +52,7 @@ export default function Home() {
       setLoading(false);
     }
   };
->>>>>>> 45ac51553c76029c44b114a74571dd889745dc7f
 
- 
 
   return (
     <div className={styles.container}>
@@ -64,13 +67,102 @@ export default function Home() {
 
           AI-Strology
 
+
         </h1>
 
         <p className={styles.description}>
           Das Horoskop basierend auf künstlicher Intelligenz
         </p>
 
-       
+        <div className="w-100">
+            <p className="w-100 my-4">Gib deinen Namen und dein Geburtsdatum ein und lasse dir dein persönliches Horoskop anzeigen!</p>
+          <form onSubmit={handleSubmit} className="shadow p-5 rounded border mb-3" >
+            <div className="row">
+              <div className="col-md-6">
+                <div className="form-group">
+                  <label>
+                    Name:
+                    <input
+                      className="form-control"
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </label>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="form-group">
+                  <label>
+                    Geburtsdatum:
+                    <input
+                      className="form-control"
+                      type="date"
+                      value={dob}
+                      onChange={(e) => setDob(e.target.value)}
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <br />
+            <div className="row w-100">
+              <div className="col-md-6">
+                <div className="form-group">
+                  <label>
+                    Geburtsort:
+                    <input
+                      className="form-control"
+                      type="text"
+                      value={place}
+                      onChange={(e) => setPlace(e.target.value)}
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+            {/* <br /> */}
+            {/* <div className="row w-100">
+              <div className="col-md-12">
+                <div className="form-group">
+                  <label>
+                    Question:
+                    <textarea
+                      className="form-control"
+                      cols={50}
+                      value={question}
+                      onChange={(e) => setQuestion(e.target.value)}
+                    />
+                  </label>
+                </div>
+              </div>
+            </div> */}
+
+            <br />
+            <button type="submit" className="mt-2 btn btn-primary">
+              Absenden
+            </button>
+          </form>
+          {loading ? (
+            <LoadingComponent />
+          ) : (
+           <div>
+              <h2>Response:</h2>
+              <div class="border shadow rounded p-1" 
+
+              style={{
+                maxHeight: '300px', // Set the maximum height of the container
+                overflowY: 'auto', // Enable scrolling for content that exceeds the maxHeight
+              }}>
+                <p
+                  style={{ wordBreak: "break-all",
+                    whiteSpace: "normal"}}  
+                >{response}</p>
+              </div>
+            </div>
+          )}
+        </div>
       </main>
 
       <footer>
