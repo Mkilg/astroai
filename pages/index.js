@@ -175,6 +175,8 @@ export default function Home() {
 
 {" "}
         </Link>
+        &nbsp;
+        &nbsp;
         <Link
           href="/about"
           target="_blank"
