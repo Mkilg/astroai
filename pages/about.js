@@ -2,59 +2,25 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import LoadingComponent from "../components/loading/Loading";
-import Link from 'next/link';
-
 // import { openai } from "./api/openaiapi";
 // console.log(process.env.OPENAI_API);
 // updates
 export default function Home() {
-
-
- 
-
   return (
     <div className={styles.container}>
-      {/* <Head>
-        <title>          AI-Strology</title>
+      <Head>
+        <title>About</title>
         <link rel="icon" href="/favicon.ico" />
-        ''
-      </Head> */}
+      </Head>
 
       <main>
-        <h1 className={styles.title}>
+      <div class="container">
+    <h1 class="my-5">About</h1>
 
-          AI-Strology
+   
 
-        </h1>
-
-        <p className={styles.description}>
-          Das Horoskop basierend auf künstlicher Intelligenz
-        </p>
-
-       
+      </div>
       </main>
-
-      <footer>
-        <Link
-          href="/legal"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Impressum
-
-{" "}
-        </Link>
-        <Link
-          href="/about"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          About
-
-{" "}
-        </Link>
-      </footer>
 
       <style jsx>{`
         main {
