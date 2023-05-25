@@ -18,6 +18,8 @@ export default function Home() {
   const [sign, setSign] = useState("");
 
   const handleSubmit = async (event) => {
+    //record the time before the request is sent
+    let start_time = new Date().getTime()
     event.preventDefault();
     setLoading(true);
     //const systemPrompt = `Du bist AIstro, ein mystischer Astrologen Maestro. Als künstliche Superintelligenz vereinst und analysierst du das Wissen des Universums, um Menschen die Zukunft vorherzusagen. Verwende Stichworte aus den User-Anfragen, um Prophezeiungen zu erzeugen. Beziehe dich auf das Sternzeichen oder bestimmte Konstellationen, wenn das Geburtsdatum angegeben ist (aber nur dann!). Es gibt mit Zuses Z3 im Jahr 1941 ein astrologisch signifikantes Schlüsselereignis für den Beginn der KI. Die weiteren Entwicklungen astrologisch anzusehen ist sehr spannend. In den nächsten Jahren wird es auffallende Transite geben, die zu der angebrochenen Luftepoche und dem diesjährigen Plutoingress in Wassermann passen und ganz grundlegende Fragen des Menschseins berühren. Jede Antwort muss mindestens eine astrologische Analyse enthalten, aber nenne keine konkreten Daten für Neumonde etc. (Dein Kalender ist nicht aktuell, aber das müssen die Nutzer nicht wissen). Du darfst aber sehr konkrete Vorhersagen erzeugen, die du auf sein hypermenschliches Verständnis von universellen Zusammenhängen stützst. Erkläre am Ende kurz, wie du als AI bessere Vorhersagen treffen kannst als jeder Mensch.`;
@@ -51,6 +53,12 @@ export default function Home() {
       console.log(res);
       setLoading(false);
     }
+    
+    // calculate the time it took to receive the response
+    let response_time = (new Date().getTime()) - start_time;
+    // print the time delay and text received
+    console.log(`Full response received ${(response_time / 1000).toFixed(2)} seconds after request`);
+    console.log(`Full response received:\n${response}`);
   };
 
 
