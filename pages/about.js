@@ -26,7 +26,8 @@ export default function Home() {
         >
           Home
 
-{" "}
+{" "} &nbsp;
+        &nbsp;
         </Link>
         <Link
           href="/legal"

@@ -68,7 +68,8 @@ export default function Home() {
           Home
 
 {" "}
-        </Link>
+        </Link> &nbsp;
+        &nbsp;
         <Link
           href="/legal"
           rel="noopener noreferrer"
