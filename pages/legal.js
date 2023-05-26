@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
+import Link from 'next/link';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 // import { openai } from "./api/openaiapi";
 // console.log(process.env.OPENAI_API);
