@@ -59,7 +59,34 @@ export default function Home() {
 
       </div>
       </main>
+      <footer>
+      <Link
+          href="/"
+          rel="noopener noreferrer"
+        >
+          Home
 
+{" "}
+        </Link>
+        <Link
+          href="/legal"
+          rel="noopener noreferrer"
+        >
+          Impressum
+
+{" "}
+        </Link>
+        &nbsp;
+        &nbsp;
+        <Link
+          href="/about"
+          rel="noopener noreferrer"
+        >
+          About
+
+{" "}
+        </Link>
+      </footer>
       <style jsx>{`
         main {
           padding: 5rem 0;
