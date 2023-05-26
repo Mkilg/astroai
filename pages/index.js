@@ -168,7 +168,6 @@ export default function Home() {
       <footer>
         <Link
           href="/legal"
-          target="_blank"
           rel="noopener noreferrer"
         >
           Impressum
@@ -179,7 +178,6 @@ export default function Home() {
         &nbsp;
         <Link
           href="/about"
-          target="_blank"
           rel="noopener noreferrer"
         >
           About
