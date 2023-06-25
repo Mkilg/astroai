@@ -12,15 +12,8 @@ const openai = async (req, res) => {
     const openaiRes = await openaiApi.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages,
-      //Marie: added this to get the response chunk by chunk
-      stream: true
     });
-    
-    //Marie: added this to get the response chunk by chunk
-    for await (const chunk of response) {
-    console.log(chunk);
-    }
-    
+
     res.status(200).json(openaiRes.data);
   } catch (error) {
     console.error("Error processing OpenAI request:", error);
