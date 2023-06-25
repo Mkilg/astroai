@@ -1,8 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { useEffect, useState } from "react";
-import Link from 'next/link';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Footer from "../components/loading/Footer";
 // import { openai } from "./api/openaiapi";
 // console.log(process.env.OPENAI_API);
 // updates
@@ -15,39 +14,11 @@ export default function Home() {
       </Head>
 
       <main>
-      <div class="container">
-    <h1 class="my-5">About</h1>
-      </div>
+        <div className="container">
+          <h1 className="my-5">About</h1>
+        </div>
       </main>
-      <footer>
-      <Link
-          href="/"
-          rel="noopener noreferrer"
-        >
-          Home
-
-{" "} &nbsp;
-        &nbsp;
-        </Link>
-        <Link
-          href="/legal"
-          rel="noopener noreferrer"
-        >
-          Impressum
-
-{" "}
-        </Link>
-        &nbsp;
-        &nbsp;
-        <Link
-          href="/about"
-          rel="noopener noreferrer"
-        >
-          About
-
-{" "}
-        </Link>
-      </footer>
+      <Footer />
       <style jsx>{`
         main {
           padding: 5rem 0;
@@ -56,24 +27,6 @@ export default function Home() {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-        }
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        footer img {
-          margin-left: 0.5rem;
-        }
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-decoration: none;
-          color: inherit;
         }
         code {
           background: #fafafa;
